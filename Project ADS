@@ -1,0 +1,185 @@
+#include<iostream>
+#include<stdlib.h>
+#include<time.h>
+#include<iomanip>
+#include<stdio.h>
+#include<math.h>
+
+using namespace std;
+
+void bubblesort();
+void selectionsort();
+void insertionsort();
+void LinearSearch();
+void BinarySearch();
+int main()
+{
+    int ch;
+    while(ch != 9)   
+    {  
+        cout<<"Main Menu"<<endl;
+        cout<<"Choose the Following option :";
+        cout<<"\n 1.Bubblesort \n 2.Selectionsort \n 3.Insertionsort \n 4.LinearSearch \n 5.BinarySearch"<<endl;
+        cout<<"Enter Your Choice"<<endl;
+        cin >> ch;
+        switch(ch)
+        {
+            case 1:bubblesort(); break;
+            case 2:selectionsort(); break;
+            case 3:insertionsort();break;
+            case 4:LinearSearch();break;
+            case 5 :BinarySearch();break;
+            case 6: exit(0);
+            default: cout<<"Please enter valid choice";
+        }
+    }
+}
+
+                void bubblesort()
+                    {
+					  double long arr[5000];
+					  	double long n=5000;
+                    cout<<"\n ** Bubble Sorting Algorithm ** \n\n";
+                    for(int i=0;i<n;i++)
+                    arr[i]=rand()%10000;
+                          	//timer begins here
+        	                clock_t start = clock();
+
+                             for( int i=1;i<n ;i++ )
+                               {
+
+                               for( int j=0; j<n-1; j++)
+                                  {
+                                      if(arr[j] > arr[j+1])
+                                        {
+                                           int temp;
+                                           temp = arr[j];
+                                            arr[j] = arr[j+1];
+                                           arr[j+1] = temp;
+
+                                        }
+
+                                  }
+                               }
+                                  //timer ends here
+                                  clock_t ends = clock();
+                                   cout << "Running Time in Seconds : ";
+                                   cout << (double) (ends - start) / CLOCKS_PER_SEC << endl;
+								   cout<<"\n\n";
+                          }
+void selectionsort()
+{
+		double long a[5000];
+		double long m=5000;
+	cout<<"\n ** Selection Sorting Algorithm ** \n\n";
+	for(int i=0;i<m;i++)
+	a[i]=rand()%10000;
+	       	//timer begins here
+        	clock_t start = clock();
+	int min,t;
+	for(int i=0;i<m-1;i++)
+	{
+		min=i;
+		for(int j=i+1;j<m;j++)
+		if(a[j]<a[min])
+		min=j;
+		t=a[i];
+		a[i]=a[min];
+		a[min]=t;
+	}
+	 clock_t ends = clock();
+                cout << "Running Time in Seconds : ";
+                cout << (double) (ends - start) / CLOCKS_PER_SEC << endl;
+                cout<<"\n\n";
+	 //timer ends here
+}
+void insertionsort()
+{
+	double long abb[5000];
+	double long b=5000;
+	cout<<"\n ** Insertion Sorting Algorithm ** \n\n";
+	for(int i=0;i<b;i++)
+	abb[i]=1542+rand()%3124;
+		clock_t start = clock();
+	int i;
+	for(i=1;i<b;i++)
+	{
+		int t;
+		t=abb[i];
+		int j=i;
+		while(abb[j-1]>t && j>0)
+		{
+			abb[j]=abb[j-1];
+			--j;
+		}
+		abb[j]=t;
+	}
+	 clock_t ends = clock();
+                cout << "Running Time in Seconds : ";
+                cout << (double) (ends - start) / CLOCKS_PER_SEC << endl;
+}
+ void LinearSearch()
+      {
+                double long arr[500];
+                double long n=500;
+				int key = 250;
+				cout<<"\n ** Linear Search Algorithm ** \n\n";
+				for(int i=0;i<n;i++)
+				    arr[i]=rand()%1000;
+					//timer begins here
+                            clock_t start = clock();
+							for(int i=0;i<n;i++)
+                            {
+								 if(key==arr[i])
+                                    break;
+                            }
+							clock_t ends = clock();
+							cout << "Running Time in Seconds : ";
+							cout << (double) (ends - start) / CLOCKS_PER_SEC <<
+							        endl;
+                                    cout<<"\n\n";
+                            
+                            
+  }
+
+void BinarySearch()
+{
+	    double long arr[500];
+        double long n=500;
+		int key = 250;
+		cout<<"\n ** Binary Search Algorithm ** \n\n";
+		for(int i=0;i<n;i++)
+		    arr[i]=rand()%1000;
+			//timer begins here
+			clock_t start = clock();
+ int mid,lower=0,upper=10,t=1;
+ for(mid=(lower+upper)/2;lower<=upper;mid=(upper+mid)/2)
+ {
+  if(arr[mid]==n)
+  {
+   printf("The Number is at position %d in Array",mid);
+   t=0;
+   break;
+  }
+  if(arr[mid]>n)
+  {
+   upper=mid-1;
+  }
+  else
+  {
+   lower=mid+1;
+  }
+ }
+ if(t)
+ {
+  printf("Element is not present");
+ }
+ else
+ {
+  printf("The Number is at position %d in Array",mid);
+ }
+ clock_t ends = clock();
+                cout << "Running Time in Seconds : ";
+				cout << (double) (ends - start) / CLOCKS_PER_SEC <<endl;
+                cout<<"\n\n";
+}	
